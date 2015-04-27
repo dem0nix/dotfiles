@@ -68,3 +68,6 @@ nmap <F8> :TagbarToggle<CR>
 set listchars=tab:▸\ ,eol:¬
 nmap <leader>l :set list!<CR>
 
+" highlight search results
+set hlsearch
+
