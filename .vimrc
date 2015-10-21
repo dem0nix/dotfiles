@@ -1,27 +1,77 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+Plugin 'L9'
+" Git plugin not hosted on GitHub
+Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+"Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Avoid a name conflict with L9
+"Plugin 'user/L9', {'name': 'newL9'}
+
+Plugin 'vim-scripts/AutoComplPop'
+Plugin 'kien/ctrlp.vim'
+Plugin 'morhetz/gruvbox.git'
+Plugin 'tomasr/molokai'
+Plugin 'scrooloose/nerdtree.git'
+Plugin 'majutsushi/tagbar'
+Plugin 'bling/vim-airline'
+Plugin 'altercation/vim-colors-solarized.git'
+Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-misc'
+Plugin 'tpope/vim-surround.git'
+Plugin 'taglist.vim'
+Plugin 't9md/vim-chef'
+Plugin 'nvie/vim-flake8'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
 " Dependencies: 
 "  - brew install ctags
 "  - https://github.com/powerline/fonts
+"  - pip install flake8
 "
-" git clone https://github.com/vim-scripts/AutoComplPop
-" git clone https://github.com/kien/ctrlp.vim
-" git clone https://github.com/morhetz/gruvbox.git
-" git clone https://github.com/tomasr/molokai
-" git clone https://github.com/scrooloose/nerdtree.git
-" git clone https://github.com/majutsushi/tagbar
-" git clone https://github.com/bling/vim-airline
-" git clone git://github.com/altercation/vim-colors-solarized.git
-" git clone https://github.com/xolox/vim-easytags
-" git clone https://github.com/xolox/vim-misc
-" git clone git://github.com/tpope/vim-surround.git
-"
+" $ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 syntax on
 set number
+set expandtab
 set tabstop=4
-set fdm=manual
+set shiftwidth=4
+set fdm=syntax
+set colorcolumn=80
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview 
-execute pathogen#infect()
 filetype plugin indent on
 set t_Co=256
 let g:solarized_termcolors=256
@@ -35,6 +85,10 @@ colorscheme solarized
 "nnoremap * :let @/ = ""<CR>:call gruvbox#hls_show()<CR>*
 "nnoremap / :let @/ = ""<CR>:call gruvbox#hls_show()<CR>/
 "nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?
+
+" 
+" Ruby specific indentation
+au BufEnter *.rb set ai sw=2 ts=2 sta et fo=croql
 
 "Q. How can I open a NERDTree automatically when vim starts up if no files were specified?
 "A. Stick this in your vimrc
@@ -67,7 +121,6 @@ nmap <F8> :TagbarToggle<CR>
 
 set listchars=tab:▸\ ,eol:¬
 nmap <leader>l :set list!<CR>
-
-" highlight search results
 set hlsearch
-
+setlocal spell spelllang=en_us
+nnoremap <space> za
