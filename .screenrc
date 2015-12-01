@@ -1,0 +1,21 @@
+###Basic staff set
+shell -$SHELL
+startup_message off             # don't want this either.
+bell_msg '-=[ b00m in %n ]=-'
+defmonitor on                   # turn monitoring on
+activity "activity on %n"                    # tell me when stuff happens!
+crlf off                        # no thanks.
+defscrollback 3000              # please sir, can i have some more?
+pow_detach_msg "Screen session of $LOGNAME" # \$:cr:\$:nl:terminated...\n[NO CARRIER]"c  # Emulate logout message
+
+defutf8 on
+
+
+termcap xterm*  LP:hs@
+
+termcap vt*  LP
+termcap vt102|vt220  Z0=\E[?3h:Z1=\E[?3l
+termcap vt100  ""  l0=PF1:l1=PF2:l2=PF3:l3=PF4
+termcap h19|z19  am@:im=\E@:ei=\EO  dc=\E[P
+
+caption always '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W}%c %{g}]'
