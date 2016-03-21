@@ -37,6 +37,7 @@ Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'vim-scripts/AutoComplPop'
 Plugin 'kien/ctrlp.vim'
 Plugin 'morhetz/gruvbox.git'
+Plugin 'tpope/vim-unimpaired' " needed for gruvbox hlsearch cursor color fix
 Plugin 'tomasr/molokai'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -85,7 +86,6 @@ filetype plugin indent on    " required
 syntax on
 set expandtab
 set tabstop=2
-set shiftwidth=2
 set fdm=syntax
 set colorcolumn=80
 set listchars=tab:▸\ ,eol:¬
@@ -94,7 +94,7 @@ set backspace=indent,eol,start " allow backspacing over everything in insert mod
 set autoindent    " always set autoindenting on
 set copyindent    " copy the previous indentation on autoindenting
 set number        " always show line numbers
-set shiftwidth=4  " number of spaces to use for autoindenting
+set shiftwidth=2  " number of spaces to use for autoindenting
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 set showmatch     " set show matching parenthesis
 set ignorecase    " ignore case when searching
@@ -258,7 +258,7 @@ map <C-l> <C-w>l
 " NOTE: that vim-airline has a tmuxline extenstion which by default sets 
 " airline's color theme onto tmuxline. 
 " If you don't want airline colors in tmuxline, set:
-"let g:airline#extensions#tmuxline#enabled = 0
+let g:airline#extensions#tmuxline#enabled = 0
 
 "call tmuxline#Tmuxline()
 let g:tmuxline_preset = 'full'
@@ -269,5 +269,5 @@ let g:tmuxline_preset = 'full'
 " or
 " let g:tmuxline_theme = 'zenburn'
 " " or
-let g:tmuxline_theme = 'vim-powerline'
+let g:tmuxline_theme = 'vim_powerline'
 " " other themes available in autoload/tmuxline/themes/*
