@@ -62,6 +62,9 @@ Plugin 'gorodinskiy/vim-coloresque'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'scrooloose/syntastic'
+Plugin 'edkolev/tmuxline.vim'
+Plugin 'jszakmeister/vim-togglecursor'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -247,7 +250,24 @@ map <C-l> <C-w>l
 "    let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
 "endif
 " 
-" or
+" 
 "
-Plugin 'jszakmeister/vim-togglecursor'
+" tmux vim-airline statusbar integration
+" 
+"
+" NOTE: that vim-airline has a tmuxline extenstion which by default sets 
+" airline's color theme onto tmuxline. 
+" If you don't want airline colors in tmuxline, set:
+"let g:airline#extensions#tmuxline#enabled = 0
 
+"call tmuxline#Tmuxline()
+let g:tmuxline_preset = 'full'
+" let g:tmuxline_preset = 'tmux'
+" let g:tmuxline_preset = 'nightly_fox'
+
+" let g:tmuxline_theme = 'icebert'
+" or
+" let g:tmuxline_theme = 'zenburn'
+" " or
+let g:tmuxline_theme = 'vim-powerline'
+" " other themes available in autoload/tmuxline/themes/*
