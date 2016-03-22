@@ -3,6 +3,7 @@
 "  - https://github.com/powerline/fonts
 "  - pip install flake8
 "  - foodcritic
+"  - shellcheck (brew install shellcheck)
 " iTerm2 colorscheme: https://github.com/morhetz/gruvbox-contrib/tree/master/iterm2
 " System Font: Fira Sans Mono: http://www.carrois.com/en/fira-4-1/
 
@@ -152,6 +153,12 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 "Q. How can I map a specific key or shortcut to open NERDTree?
 "A. Stick this in your vimrc to open NERDTree with Ctrl+n (you can set whatever key you want):
 map <C-n> :NERDTreeToggle<CR>
+
+" keep NERDTree open in buffers
+let NERDTreeQuitOnOpen=0
+" keep NERDTree open in tabs
+let g:nerdtree_tabs_open_on_console_startup=1
+
 "
 " vim-airline plugin
 "
@@ -218,6 +225,11 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_chef_checkers = ['foodcritic']
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_sh_shellcheck_quiet_messages = { "level" : "warning" }
+let b:syntastic_mode = "active"
+"let g:syntastic_aggregate_errors = 1
+
 nmap <C-s> :lclose<CR>
 " TODO: make toggle function
 
@@ -271,3 +283,5 @@ let g:tmuxline_preset = 'full'
 " " or
 let g:tmuxline_theme = 'vim_powerline'
 " " other themes available in autoload/tmuxline/themes/*
+
+
