@@ -289,7 +289,7 @@ let g:tmuxline_theme = 'vim_powerline'
 " \l       : list buffers
 " \b \f \g : go back/forward/last-used
 " \1 \2 \3 : go to buffer 1/2/3 etc
-nnoremap <Leader>l :ls<CR>
+" nnoremap <Leader>l :ls<CR> " overlaps with line numbers toggle.
 nnoremap <Leader>b :bp<CR>
 nnoremap <Leader>f :bn<CR>
 nnoremap <Leader>g :e#<CR>
