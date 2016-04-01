@@ -1,9 +1,12 @@
 " Dependencies: 
+"  - git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 "  - brew install ctags
 "  - https://github.com/powerline/fonts
 "  - pip install flake8
 "  - foodcritic
 "  - shellcheck (brew install shellcheck)
+"  and then run vim and issue command :PluginInstall
+"
 " iTerm2 colorscheme: https://github.com/morhetz/gruvbox-contrib/tree/master/iterm2
 " System Font: Fira Sans Mono: http://www.carrois.com/en/fira-4-1/
 
@@ -26,7 +29,7 @@ Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
 " Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
+" Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
 "Plugin 'file:///home/gmarik/path/to/plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
@@ -35,6 +38,7 @@ Plugin 'git://git.wincent.com/command-t.git'
 " Avoid a name conflict with L9
 "Plugin 'user/L9', {'name': 'newL9'}
 
+Plugin 'sheerun/vim-polyglot'
 Plugin 'vim-scripts/AutoComplPop'
 Plugin 'kien/ctrlp.vim'
 Plugin 'morhetz/gruvbox.git'
@@ -66,6 +70,7 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'scrooloose/syntastic'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'jszakmeister/vim-togglecursor'
+Plugin 'mustache/vim-mustache-handlebars'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -80,9 +85,6 @@ filetype plugin indent on    " required
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
 " see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
-" $ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 syntax on
 set expandtab
@@ -117,6 +119,10 @@ set noerrorbells         " don't beep
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview 
 autocmd filetype python set expandtab
+
+" handlebars highlighting
+au BufRead,BufNewFile *.handlebars,*.hbs set ft=html syntax=mustache
+
 
 let g:solarized_termcolors=256
 let g:gruvbox_contrast_dark="hard"
@@ -155,7 +161,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 map <C-n> :NERDTreeToggle<CR>
 
 " keep NERDTree open in buffers
-let NERDTreeQuitOnOpen=0
+" let NERDTreeQuitOnOpen=0
 " keep NERDTree open in tabs
 let g:nerdtree_tabs_open_on_console_startup=1
 
@@ -180,7 +186,7 @@ let g:airline_powerline_fonts = 1
 nmap <F8> :TagbarToggle<CR>
 nmap <silent> ./ :nohlsearch<CR>
 nmap <leader>l :set list!<CR>
-setlocal spell spelllang=en_us
+" setlocal spell spelllang=en_us
 nnoremap <space> za
 
 """ JSHINT2
@@ -228,6 +234,9 @@ let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_sh_shellcheck_quiet_messages = { "level" : "warning" }
 let b:syntastic_mode = "active"
+
+let g:syntastic_javascript_checkers = ['jshint']
+
 "let g:syntastic_aggregate_errors = 1
 
 nmap <C-s> :lclose<CR>
@@ -303,3 +312,10 @@ nnoremap <Leader>7 :7b<CR>
 nnoremap <Leader>8 :8b<CR>
 nnoremap <Leader>9 :9b<CR>
 nnoremap <Leader>0 :10b<CR>
+
+" TODO:
+" set virtualedit=onemore
+
+set foldmethod=manual
+" REFER: https://github.com/mustache/vim-mustache-handlebars#mustache-abbreviations
+let g:mustache_abbreviations = 1
