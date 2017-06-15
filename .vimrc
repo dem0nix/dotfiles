@@ -1,3 +1,6 @@
+" (optional) For those using the fish shell: add set shell=/bin/bash to your
+" .vimrc
+set shell=/bin/bash
 " Dependencies: 
 "  - git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 "  - brew install ctags
@@ -43,7 +46,7 @@ Plugin 'vim-scripts/AutoComplPop'
 Plugin 'kien/ctrlp.vim'
 Plugin 'morhetz/gruvbox.git'
 Plugin 'tpope/vim-unimpaired' " needed for gruvbox hlsearch cursor color fix
-Plugin 'tomasr/molokai'
+"Plugin 'tomasr/molokai'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'majutsushi/tagbar'
@@ -71,7 +74,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'jszakmeister/vim-togglecursor'
 Plugin 'mustache/vim-mustache-handlebars'
-
+Plugin 'hashivim/vim-terraform'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -163,7 +166,7 @@ map <C-n> :NERDTreeToggle<CR>
 " keep NERDTree open in buffers
 " let NERDTreeQuitOnOpen=0
 " keep NERDTree open in tabs
-let g:nerdtree_tabs_open_on_console_startup=1
+" let g:nerdtree_tabs_open_on_console_startup=1
 
 "
 " vim-airline plugin
