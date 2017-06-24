@@ -70,11 +70,15 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'gorodinskiy/vim-coloresque'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'jszakmeister/vim-togglecursor'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'hashivim/vim-terraform'
+Plugin 'juliosueiras/vim-terraform-completion'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'fatih/vim-hclfmt'
+Plugin 'c.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -239,6 +243,7 @@ let g:syntastic_sh_shellcheck_quiet_messages = { "level" : "warning" }
 let b:syntastic_mode = "active"
 
 let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_terraform_tffilter_plan = 1
 
 "let g:syntastic_aggregate_errors = 1
 
@@ -322,3 +327,14 @@ nnoremap <Leader>0 :10b<CR>
 set foldmethod=manual
 " REFER: https://github.com/mustache/vim-mustache-handlebars#mustache-abbreviations
 let g:mustache_abbreviations = 1
+set completeopt-=preview
+set omnifunc=syntaxcomplete#Complete
+
+" HCL
+let g:hcl_fmt_autosave = 0
+let g:tf_fmt_autosave = 0
+let g:nomad_fmt_autosave = 0
+
+" C Support
+let  g:C_UseTool_cmake    = 'yes'
+let  g:C_UseTool_doxygen = 'yes'
