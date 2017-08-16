@@ -1,15 +1,21 @@
 [user]
-	name = <username>
-	email = <email>
+  name = Dmytro Pashchenko
+  email = 1942998+dem0nix@users.noreply.github.com
+  signkey = 6CCBC94C298EA405D275323A692F66DDC8E818DE
 [filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
+  clean = git-media-clean %f
+  smudge = git-media-smudge %f
 [core]
-	autocrlf = input
-	excludesfile = /Users/dream/.gitignore_global
-
+  autocrlf = input
+  excludesfile = /Users/dream/.gitignore_global
+#[difftool "sourcetree"]
+# cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+# path = 
+[mergetool "sourcetree"]
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
 [push]
-	default = simple
+  default = simple
 
 [alias]
   st = status
@@ -17,11 +23,11 @@
   lg = log --graph --date=relative --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad)%Creset'
   oops = commit --amend --no-edit
   review-local = "!git lg @{push}.."
-
 [filter "lfs"]
-	required = true
-	clean = git-lfs clean %f
-  smudge = git-lfs smudge %f
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 
 [diff]
   tool = meld
@@ -29,7 +35,7 @@
   prompt = false
 [difftool "meld"]
   trustExitCode = true
-  cmd = open -W -a Meld --args \"$LOCAL\" \"$PWD/$REMOTE\"
+  cmd = open -W -a Meld --args \"$LOCAL\" \"$REMOTE\"
 [merge]
   tool = meld
 [mergetool]
@@ -37,3 +43,10 @@
 [mergetool "meld"]
   trustExitCode = true
   cmd = open -W -a Meld --args --auto-merge \"$PWD/$LOCAL\" \"$PWD/$BASE\" \"$PWD/$REMOTE\" --output=\"$PWD/$MERGED\"
+#[branch]
+# autosetuprebase = always
+[difftool "sourcetree"]
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path = 
+[commit]
+  gpgsign = true
